@@ -1,0 +1,2 @@
+ljdt_app:
+    resource: "@LJDTAppBundle/Resources/config/routing.yml"

@@ -1,0 +1,229 @@
+{# app/resources/views/App/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block title %} {{ parent() }} {% endblock %}
+
+{% block body %}
+    <header class="container-fluid">
+        <div class="row">
+            <img src="{{ asset('img/header-background.jpg') }}" class="img-responsive" alt="Image de présentation">
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-custom navbar-static-top" id="navbar-main">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        <a href="#"><img src="{{ asset('img/logo.png') }}" class="img-responsive hidden-xs hidden-sm" id="logo" alt="Image de présentation"></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="#">Accueil</a></li>
+                            <li><a href="#">Produits</a></li>
+                            <li><a href="#">Profils</a></li>
+                            <li><a href="#">Galerie</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </header>
+
+    <div id="accueil-area">
+        <div class="container">
+            <div class="row">
+                <h3>Accueil</h3>
+            </div>
+            <div class="row">
+                <p class="text-justify">Les jardins de Thorim intervient en création et en aménagement d'espace vert pour particuliers et professionnels : du portail, à la terrasse, en passant par la clôture, l'allée, le jardin, l'arrosage raisonné... Nous proposons également des contrats de maintenance pour l'entretien de votre jardin, de votre allée et de votre terrasse. Afin de vous offrir un service de proximité et de qualité, Les jardins de Thorim s'appuie sur une charte de qualité respectueuse de l'environnement.<br />Les jardin de Thorim vous apporte ses idées, son savoir-faire, sa technique et son expérience de plus de 20 ans pour la réalisation de vos projets. Nous aménageons votre jardin selon vos souhaits et selon votre budget.</p>
+            </div>
+            <div class="row" id="accueil-pictures">
+                <div class="hidden-xs col-sm-6"><img src="{{ asset('img/accueil1.jpg') }}" class="img-responsive"  alt="Image d'accueil 1"></div>
+                <div class="hidden-xs col-sm-6"><img src="{{ asset('img/accueil2.jpg') }}" class="img-responsive"  alt="Image d'accueil 2"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="products-area">
+        <div id="products-area-title">
+            <div class="container">
+                <div class="row">
+                    <h3>Nos produits</h3>
+                </div>
+            </div>
+        </div>
+        <div id="products-area-content">
+            <div class="container">
+                <div class="row">
+                    {% include '::App/_product.html.twig' %}
+                </div>
+            </div>
+        </div>
+        <div id="professional-area-title">
+            <div class="container">
+                <div class="row">
+                    <h3>Professionnels</h3>
+                    <p class="text-center">L'ensemble de nos clients professionnels sont soumit à des contrats d'entretien.<br />La raison est simple, vous fournir une qualité de service optimale.<br />Voici comment nous procedons.</p>
+                </div>
+            </div>
+        </div>
+        <div id="professional-area-content">
+            <div class="container">
+                <div class="row">
+                    <p class="text-justify">Nous vous proposons une visite de votre jardin avant toute estimation. Nous établissons un devis clair et détaillé. Nous conviendrons ensemble d’un délai de réalisation que nous respecterons. Nous vous informerons du bon déroulement des travaux et conviendrons ensemble des suites à donner aux aléas qui peuvent se présenter. Si des travaux qui n’étaient pas prévus initialement sont envisagés, avant de les engager, nous vous proposerons un devis complémentaire. Si nous faisons intervenir des sous-traitants, vous en serez bien évidemment informés. Nous mettons un point d’honneur à faire intervenir chez vous des collaborateurs compétents, formés et qui respectent les règles de sécurité.<br />Après nos interventions, le chantier sera propre et rangé. Une question ? Notre mission consiste à vous accompagner et vous conseiller dans chaque étape de votre projet et même après la réalisation.<br /><br />Faire appel à nous c’est aussi avoir une responsabilité dans la préservation de l’environnement et œuvrer à faire de votre jardin un lieu de nature. Nous nous engageons à économiser l’eau, préserver, voire réintroduire la biodiversité dans votre jardin. Nous vous conseillons et proposons les végétaux les mieux adaptés et nous vous accompagnons pour trouver des solutions dont l’impact environnemental est réduit. Les déchets verts sont valorisés tandis que les autres déchets sont gérés tout au long du chantier. L’utilisation des produits phytosanitaires est réduite et maitrisée. Enfin nous vous communiquerons alors les consignes de sécurité.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profils-area">
+        <div id="profils-area-title">
+            <div class="container">
+                <div class="row">
+                    <h3>Nos références</h3>
+                    <p>Professionnelles</p>
+                </div>
+            </div>
+        </div>
+        <div id="profils-area-content">
+            <div class="container">
+                <div class="row">
+                    {% include '::App/_profile.html.twig' %}
+                </div>
+                <div class="row">
+                    <div id="navigation-buttons" class="text-right">
+                        <a href="#"><i class="fa fa-chevron-left"></i></a>
+                        <a href="#"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Nos aménagements</h3>
+                </div>
+                <div class="row" id="work-and-testimony">
+                    <div class="col-sm-4">
+                        <img src="{{ asset('img/gallery5.jpg') }}" class="img-responsive"  alt="Image profil 5">
+                    </div>
+                    <div class="hidden-xs col-sm-8">
+                        <img src="{{ asset('img/testimony.png') }}" class="img-responsive"  alt="testimony">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="hidden-xs col-xs-2" id="info-work">
+                        <p>Parc de jeux</p>
+                    </div>
+                    <div id="work-navigation-buttons" class="col-xs-12 col-sm-2 text-right">
+                        <a href="#"><i class="fa fa-chevron-left"></i></a>
+                        <a href="#"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <p id="info-testimony" class="hidden-xs">Témoignages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery-area">
+        <div id="gallery-area-title">
+            <div class="container">
+                <div class="row">
+                    <h3>Galerie</h3>
+                </div>
+                <div class="row" id="gallery-area-content">
+                    {% include '::App/_gallery.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-area">
+        <div id="contact-title">
+            <div class="container">
+                <div class="row">
+                    <h3 class="col-sm-6 text-left">Contact</h3>
+                    <p class="hidden-xs col-sm-6 text-right" id="contact-social-networks">
+                        <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i> /Facebook</a>
+                        <a href="https://twitter.com/"><i class="fa fa-twitter"></i> @Twitter</a>
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div id="contact-content">
+            <div class="container">
+                <div class="row">
+                    <p class="text-center" id="contact-content-title">CONTACT</p>
+                    <hr />
+                </div>
+                <div class="row">
+                    <p id="contact-content-subtitle" class="text-center">Vous pouvez nous écrire en utilisant le formulaire ci-dessous :</p>
+                </div>
+                <div class="row">
+                    <div class="hidden-xs col-sm-3">
+                        <p class="bold">Entreprise PT infinys<br />Propriétaire des Jardins de Thorim<br />ZA La Forêt<br />17 bis rue du repos<br />03200 Vichy<br />Tel : 0470856345<br />email : info@lesjardinsdethorim.fr</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-9" id="formulaire">
+                        <p>Les champs avec <span class="asterisk">*</span> sont obligatoires</p>
+                        <form method="post">
+                            <p class="col-xs-12 col-sm-4"><label for="name">Nom : <span class="asterisk">*</span></label><input type="text" name="name" id="name" /></p>
+                            <p class="col-xs-12 col-sm-4"><label for="email">Email : <span class="asterisk">*</span></label><input type="text" name="email" id="email" /></p>
+                            <p class="col-xs-12 col-sm-4"><label for="object">Objet : </label><input type="text" name="object" id="object" /></p><br />
+                            <p class="col-xs-12 col-sm-12"><label for="message">Message : <span class="asterisk">*</span></label><textarea id="message"></textarea></p><br />
+                            <p><input type="submit" value="Submit" class="submit-button" /></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid hidden-xs">
+       <div class="container">
+           <div class="col-sm-3 text-center">
+               <h4>Site</h4>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Profils</a></li>
+                    <li><a href="#">Galerie</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+           </div>
+           <div class="col-sm-3 text-center">
+               <h4>Réseaux sociaux</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/">Facebook</a></li>
+                    <li><a href="https://twitter.com/">Twitter</a></li>
+                </ul>
+           </div>
+           <div class="col-sm-3 text-center">
+               <h4>PT infinys</h4>
+                <ul>
+                    <li><a href="#">Nos activités</a></li>
+                    <li><a href="#">Notre réseau</a></li>
+                    <li><a href="#">Notre expertise</a></li>
+                </ul>
+           </div>
+           <div class="col-sm-3 text-center">
+                <h4>Administration</h4>
+                <ul>
+                    <li><a href="{{ path('ljdt_app_admin') }}">Admin</a></li>
+                </ul>
+            </div>
+            </div>
+    </footer>
+
+    <div id="Copyright" class="container-fluid text-center">
+        <p>© Copyright 1995 - 2016 - Le site Les jardins de thorim. Tous droits réservés.</p>
+    </div>
+{% endblock %}

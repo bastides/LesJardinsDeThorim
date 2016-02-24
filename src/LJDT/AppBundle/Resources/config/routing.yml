@@ -1,0 +1,7 @@
+ljdt_app_home:
+    path:      /
+    defaults:  { _controller: LJDTAppBundle:App:index }
+    
+ljdt_app_admin:
+    path:      /admin
+    defaults:  { _controller: LJDTAppBundle:Admin:index }

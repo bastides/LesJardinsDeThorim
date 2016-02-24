@@ -1,0 +1,9 @@
+{# app/Resources/views/App/_gallery.html.twig #}
+
+{% for gallery in listGalleries %}
+<div class="col-sm-3">
+    <img src="{{ asset(gallery.photo.url) }}" class="img-responsive"  alt="{{ gallery.photo.alt }}">
+</div>
+{% else %}
+    <p>La galerie est vide.</p>
+{% endfor %} 
