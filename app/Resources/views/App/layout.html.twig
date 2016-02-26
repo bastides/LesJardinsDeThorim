@@ -173,14 +173,10 @@
                         <p class="bold">Entreprise PT infinys<br />Propriétaire des Jardins de Thorim<br />ZA La Forêt<br />17 bis rue du repos<br />03200 Vichy<br />Tel : 0470856345<br />email : info@lesjardinsdethorim.fr</p>
                     </div>
                     <div class="col-xs-12 col-sm-9" id="formulaire">
-                        <p>Les champs avec <span class="asterisk">*</span> sont obligatoires</p>
-                        <form method="post">
-                            <p class="col-xs-12 col-sm-4"><label for="name">Nom : <span class="asterisk">*</span></label><input type="text" name="name" id="name" /></p>
-                            <p class="col-xs-12 col-sm-4"><label for="email">Email : <span class="asterisk">*</span></label><input type="text" name="email" id="email" /></p>
-                            <p class="col-xs-12 col-sm-4"><label for="object">Objet : </label><input type="text" name="object" id="object" /></p><br />
-                            <p class="col-xs-12 col-sm-12"><label for="message">Message : <span class="asterisk">*</span></label><textarea id="message"></textarea></p><br />
-                            <p><input type="submit" value="Submit" class="submit-button" /></p>
-                        </form>
+                        <p>Les champs avec * sont obligatoires</p>
+                        
+                        {{ render(controller("LJDTAppBundle:App:form")) }}
+                        
                     </div>
                 </div>
             </div>
@@ -217,7 +213,7 @@
            <div class="col-sm-3 text-center">
                 <h4>Administration</h4>
                 <ul>
-                    <li><a href="{{ path('ljdt_app_admin') }}">Admin</a></li>
+                    <li><a href="{{ path('ljdt_admin_home') }}">Admin</a></li>
                 </ul>
             </div>
             </div>
