@@ -61,7 +61,7 @@ class AppController extends Controller
             return $this->redirect($this->generateUrl('ljdt_app_home'));
         }
         
-        return $this->render('::/App/_contact.html.twig', array(
+        return $this->render('::App/_contact.html.twig', array(
           'form' => $form->createView(),
         ));
     }
