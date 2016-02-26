@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AppController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -41,28 +41,22 @@ class AppController extends Controller
             0
         );
         
-        return $this->render('::App/layout.html.twig', array(
-            'listProducts' => $listProducts,
-            'listProfiles' => $listProfiles,
-            'listGalleries' => $listGalleries
-        ));
-    }
-    
-    public function formAction(Request $request)
-    {
         $contact = new Contact();
         $form = $this->get('form.factory')->create(ContactType::class, $contact);
-
+       
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('ljdt_app_home'));
+            
+            return $this->redirectToRoute('ljdt_app_home');
         }
         
-        return $this->render('::App/_contact.html.twig', array(
-          'form' => $form->createView(),
+        return $this->render('::App/layout.html.twig', array(
+            'listProducts' => $listProducts,
+            'listProfiles' => $listProfiles,
+            'listGalleries' => $listGalleries,
+            'form' => $form->createView()
         ));
     }
 }
