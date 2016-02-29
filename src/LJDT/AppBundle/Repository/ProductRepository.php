@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * ProductRepository
@@ -12,4 +13,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    public function myFindBy($limit)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('p')
+            ->from($this->_entityName, 'p')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+        
+        return $queryBuilder;
+    }
 }

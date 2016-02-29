@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * GalleryRepository
@@ -12,4 +13,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class GalleryRepository extends EntityRepository
 {
+    public function myFindBy($limit)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('g')
+            ->from($this->_entityName, 'g')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        return $queryBuilder;
+    }
 }

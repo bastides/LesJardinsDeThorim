@@ -12,18 +12,15 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $adminQueries = $this->get('ljdt_app.menu_admin');
+        $queries = $adminQueries->menu(5);
 
-        $listProducts = $em->getRepository('LJDTAppBundle:Product')->findAll();
-        
-        $listProfiles = $em->getRepository('LJDTAppBundle:Profile')->findAll();
-        
-        $listGalleries = $em->getRepository('LJDTAppBundle:Gallery')->findAll();
-        
-        return $this->render('::Admin/layout.html.twig', array(
-            'listProducts' => $listProducts,
-            'listProfiles' => $listProfiles,
-            'listGalleries' => $listGalleries
+        return $this->render('::Admin/admin.html.twig', array(
+            'listProducts' => $queries['listProducts'],
+            'listProfiles' => $queries['listProfiles'],
+            'listGalleries' => $queries['listGalleries']
         ));
     }
+
+
 }
