@@ -7,6 +7,15 @@ namespace LJDT\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use LJDT\AppBundle\Entity\Product;
+use LJDT\AppBundle\Form\ProductType;
+use LJDT\AppBundle\Entity\Profile;
+use LJDT\AppBundle\Form\ProfileType;
+use LJDT\AppBundle\Entity\Gallery;
+use LJDT\AppBundle\Form\GalleryType;
+use LJDT\AppBundle\Entity\Photo;
+use LJDT\AppBundle\Form\PhotoType;
+
 
 class AdminController extends Controller
 {
@@ -38,6 +47,30 @@ class AdminController extends Controller
         ));
     }
 
+    public function addProductAction(Request $request)
+    {
+        $product = new Product();
+        $form = $this->get('form.factory')->create(ProductType::class, $product);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('ljdt_admin_home');
+        }
+
+        $adminMenu = $this->get('ljdt_app.menu_admin');
+        $queries = $adminMenu->menu(5);
+
+        return $this->render('::Admin/addproduct.html.twig', array(
+            'menuProducts' => $queries['menuProducts'],
+            'menuProfiles' => $queries['menuProfiles'],
+            'menuGalleries' => $queries['menuGalleries'],
+            'form' => $form->createView()
+        ));
+    }
+
     public function profilesAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -54,6 +87,30 @@ class AdminController extends Controller
         ));
     }
 
+    public function addProfileAction(Request $request)
+    {
+        $profile = new Profile();
+        $form = $this->get('form.factory')->create(ProfileType::class, $profile);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($profile);
+            $em->flush();
+
+            return $this->redirectToRoute('ljdt_admin_home');
+        }
+
+        $adminMenu = $this->get('ljdt_app.menu_admin');
+        $queries = $adminMenu->menu(5);
+
+        return $this->render('::Admin/addprofile.html.twig', array(
+            'menuProducts' => $queries['menuProducts'],
+            'menuProfiles' => $queries['menuProfiles'],
+            'menuGalleries' => $queries['menuGalleries'],
+            'form' => $form->createView()
+        ));
+    }
+
     public function galleryAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -67,6 +124,30 @@ class AdminController extends Controller
             'menuProfiles' => $queries['menuProfiles'],
             'menuGalleries' => $queries['menuGalleries'],
             'listGallery' => $listGallery
+        ));
+    }
+
+    public function addGalleryAction(Request $request)
+    {
+        $gallery = new Gallery();
+        $form = $this->get('form.factory')->create(GalleryType::class, $gallery);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($gallery);
+            $em->flush();
+
+            return $this->redirectToRoute('ljdt_admin_home');
+        }
+
+        $adminMenu = $this->get('ljdt_app.menu_admin');
+        $queries = $adminMenu->menu(5);
+
+        return $this->render('::Admin/addgallery.html.twig', array(
+            'menuProducts' => $queries['menuProducts'],
+            'menuProfiles' => $queries['menuProfiles'],
+            'menuGalleries' => $queries['menuGalleries'],
+            'form' => $form->createView()
         ));
     }
 }

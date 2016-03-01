@@ -18,6 +18,7 @@ class ProfileRepository extends EntityRepository
         $queryBuilder = $this->_em->createQueryBuilder()
             ->select('p')
             ->from($this->_entityName, 'p')
+            ->orderBy('p.id', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()

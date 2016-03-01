@@ -10,10 +10,22 @@ ljdt_admin_products:
     path:      /admin/products
     defaults:  { _controller: LJDTAppBundle:Admin:products }
 
+ljdt_admin_product_add:
+    path:      /admin/product/add
+    defaults:  { _controller: LJDTAppBundle:Admin:addProduct }
+
 ljdt_admin_profiles:
     path:      /admin/profiles
     defaults:  { _controller: LJDTAppBundle:Admin:profiles }
 
+ljdt_admin_profile_add:
+    path:      /admin/profile/add
+    defaults:  { _controller: LJDTAppBundle:Admin:addProfile }
+
 ljdt_admin_gallery:
-    path: /admin/gallery
+    path:      /admin/gallery
     defaults:  { _controller: LJDTAppBundle:Admin:gallery }
+
+ljdt_admin_gallery_add:
+    path: /admin/gallery/add
+    defaults:  { _controller: LJDTAppBundle:Admin:addGallery }

@@ -1,0 +1,27 @@
+{# app/resources/views/Admin/addproduct.html.twig #}
+
+{% extends "::Admin/admin.html.twig" %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block title %} Ajouter un produit {% endblock %}
+
+{% block page %}
+    <h3>Formulaire d'ajout de produit</h3>
+    <div class="row">
+        {{ form_start(form, {'attr': {'class': 'col-xs-12 col-sm-6 col-md-6'}}) }}
+            <p> {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }} </p>
+            <p> {{ form_errors(form.name, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }} </p>
+            <p> {{ form_errors(form.description, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.photo) }} </p>
+            <p> {{ form_errors(form.photo, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_errors(form, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

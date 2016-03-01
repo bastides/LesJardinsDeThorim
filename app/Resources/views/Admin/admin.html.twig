@@ -32,7 +32,7 @@
                                 <li>Aucun produit trouvé</li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Créer un produit</a></li>
+                            <li><a href="{{ path('ljdt_admin_product_add') }}">Créer un produit</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('ljdt_admin_products') }}">Liste complète des produits</a></li>
                         </ul>
@@ -46,7 +46,7 @@
                                 <li>Aucun profil trouvé</li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Créer un profil</a></li>
+                            <li><a href="{{ path('ljdt_admin_profile_add') }}">Créer un profil</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('ljdt_admin_profiles') }}">Liste complète des profiles</a></li>
                         </ul>
@@ -60,7 +60,7 @@
                                 <li>Aucune photo trouvé</li>
                             {% endfor %}
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Ajouter une photo</a></li>
+                            <li><a href="{{ path('ljdt_admin_gallery_add') }}">Ajouter une photo</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('ljdt_admin_gallery') }}">Liste complète des photos</a></li>
                         </ul>

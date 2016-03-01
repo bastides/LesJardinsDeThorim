@@ -27,9 +27,9 @@ class Gallery
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-    
+
     /**
-     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 
@@ -37,7 +37,7 @@ class Gallery
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class Gallery
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -83,7 +83,7 @@ class Gallery
     /**
      * Get photo
      *
-     * @return \LJDT\AppBundle\Entity\Photo 
+     * @return \LJDT\AppBundle\Entity\Photo
      */
     public function getPhoto()
     {

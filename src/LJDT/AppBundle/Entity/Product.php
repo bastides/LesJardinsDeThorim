@@ -36,7 +36,7 @@ class Product
     private $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 

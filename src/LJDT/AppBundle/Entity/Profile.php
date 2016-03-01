@@ -57,7 +57,7 @@ class Profile
     private $linkedin;
     
     /**
-     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 
@@ -65,7 +65,7 @@ class Profile
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -88,7 +88,7 @@ class Profile
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -111,7 +111,7 @@ class Profile
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -134,7 +134,7 @@ class Profile
     /**
      * Get facebook
      *
-     * @return string 
+     * @return string
      */
     public function getFacebook()
     {
@@ -157,7 +157,7 @@ class Profile
     /**
      * Get twitter
      *
-     * @return string 
+     * @return string
      */
     public function getTwitter()
     {
@@ -180,7 +180,7 @@ class Profile
     /**
      * Get linkedin
      *
-     * @return string 
+     * @return string
      */
     public function getLinkedin()
     {
@@ -203,7 +203,7 @@ class Profile
     /**
      * Get photo
      *
-     * @return \LJDT\AppBundle\Entity\Photo 
+     * @return \LJDT\AppBundle\Entity\Photo
      */
     public function getPhoto()
     {

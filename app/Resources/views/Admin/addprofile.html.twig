@@ -1,0 +1,36 @@
+{# app/resources/views/Admin/addprofile.html.twig #}
+
+{% extends "::Admin/admin.html.twig" %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block title %} Ajouter un profil {% endblock %}
+
+{% block page %}
+    <h3>Formulaire d'ajout de profil</h3>
+    <div class="row">
+        {{ form_start(form, {'attr': {'class': 'col-xs-12 col-sm-6 col-md-6'}}) }}
+            <p> {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }} </p>
+            <p> {{ form_errors(form.name, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }} </p>
+            <p> {{ form_errors(form.description, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.facebook, {'attr': {'class': 'form-control', 'placeholder': 'URL Facebook'}}) }} </p>
+            <p> {{ form_errors(form.facebook, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.twitter, {'attr': {'class': 'form-control', 'placeholder': 'URL Twitter'}}) }} </p>
+            <p> {{ form_errors(form.twitter, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.linkedin, {'attr': {'class': 'form-control', 'placeholder': 'URL LinkeDin'}}) }} </p>
+            <p> {{ form_errors(form.linkedin, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_widget(form.photo) }} </p>
+            <p> {{ form_errors(form.photo, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            <p> {{ form_errors(form, {'attr': {'class': 'alert alert-danger'}}) }} </p>
+
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
