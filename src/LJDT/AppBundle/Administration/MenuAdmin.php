@@ -25,9 +25,9 @@ class MenuAdmin
       $listGalleries = $this->em->getRepository('LJDTAppBundle:Gallery')->myFindBy($limit);
 
       return $queries = Array(
-        'listProducts' => $listProducts,
-        'listProfiles' => $listProfiles,
-        'listGalleries' => $listGalleries
+        'menuProducts' => $listProducts,
+        'menuProfiles' => $listProfiles,
+        'menuGalleries' => $listGalleries
       );
   }
 }

@@ -34,7 +34,7 @@ class Product
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist"})
      */
@@ -44,7 +44,7 @@ class Product
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -67,7 +67,7 @@ class Product
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -90,7 +90,7 @@ class Product
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -113,7 +113,7 @@ class Product
     /**
      * Get photo
      *
-     * @return \LJDT\AppBundle\Entity\Photo 
+     * @return \LJDT\AppBundle\Entity\Photo
      */
     public function getPhoto()
     {

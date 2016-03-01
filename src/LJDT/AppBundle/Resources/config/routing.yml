@@ -5,3 +5,15 @@ ljdt_app_home:
 ljdt_admin_home:
     path:      /admin
     defaults:  { _controller: LJDTAppBundle:Admin:index }
+
+ljdt_admin_products:
+    path:      /admin/products
+    defaults:  { _controller: LJDTAppBundle:Admin:products }
+
+ljdt_admin_profiles:
+    path:      /admin/profiles
+    defaults:  { _controller: LJDTAppBundle:Admin:profiles }
+
+ljdt_admin_gallery:
+    path: /admin/gallery
+    defaults:  { _controller: LJDTAppBundle:Admin:gallery }

@@ -26,32 +26,32 @@ class AppController extends Controller
             3,
             0
         );
-        
+
         $listProfiles = $em->getRepository('LJDTAppBundle:Profile')->findBy(
             array(),
             array('id' => 'asc'),
             4,
             0
         );
-        
+
         $listGalleries = $em->getRepository('LJDTAppBundle:Gallery')->findBy(
             array(),
             array('id' => 'asc'),
             4,
             0
         );
-        
+
         $contact = new Contact();
         $form = $this->get('form.factory')->create(ContactType::class, $contact);
-       
+
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
-            
+
             return $this->redirectToRoute('ljdt_app_home');
         }
-        
+
         return $this->render('::App/layout.html.twig', array(
             'listProducts' => $listProducts,
             'listProfiles' => $listProfiles,
