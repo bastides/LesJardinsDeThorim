@@ -7,12 +7,14 @@
 {% block title %} Liste de la galerie {% endblock %}
 
 {% block page %}
-    <h3 class="list-group-item title-admin">Liste de la galerie</h3>
-    <ul class="list-group">
-        {% for gallery in listGallery %}
-            <li class="list-group-item list-group-item-success">{{ gallery.title }}</li>
-        {% else %}
-            <li>Aucune photo trouvée</li>
-        {% endfor %}
-    </ul>
+    <div class="col-xs-12 col-sm-6">
+        <h3 class="list-group-item title-admin">Liste de la galerie</h3>
+        <ul class="list-group">
+            {% for gallery in listGallery %}
+                <li class="list-group-item list-group-item-success">{{ gallery.title }}</li>
+            {% else %}
+                <li>Aucune photo trouvée</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

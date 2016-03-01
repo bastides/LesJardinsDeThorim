@@ -9,7 +9,7 @@
 {% block page %}
     <h3>Formulaire d'ajout de profil</h3>
     <div class="row">
-        {{ form_start(form, {'attr': {'class': 'col-xs-12 col-sm-6 col-md-6'}}) }}
+        {{ form_start(form, {'attr': {'class': 'col-xs-12 col-sm-6'}}) }}
             <p> {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre'}}) }} </p>
             <p> {{ form_errors(form.title, {'attr': {'class': 'alert alert-danger'}}) }} </p>
 

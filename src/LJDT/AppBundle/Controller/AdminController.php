@@ -53,9 +53,13 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(ProductType::class, $product);
 
         if ($form->handleRequest($request)->isValid()) {
+            $product->getPhoto()->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
+
+            $session = $request->getSession();
+            $session->getFlashBag()->add('info', 'Produit bien enregistré');
 
             return $this->redirectToRoute('ljdt_admin_home');
         }
@@ -93,9 +97,13 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(ProfileType::class, $profile);
 
         if ($form->handleRequest($request)->isValid()) {
+            $profile->getPhoto()->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($profile);
             $em->flush();
+
+            $session = $request->getSession();
+            $session->getFlashBag()->add('info', 'Profil bien enregistré');
 
             return $this->redirectToRoute('ljdt_admin_home');
         }
@@ -133,9 +141,13 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(GalleryType::class, $gallery);
 
         if ($form->handleRequest($request)->isValid()) {
+            $gallery->getPhoto()->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($gallery);
             $em->flush();
+
+            $session = $request->getSession();
+            $session->getFlashBag()->add('info', 'Photo bien enregistrée');
 
             return $this->redirectToRoute('ljdt_admin_home');
         }

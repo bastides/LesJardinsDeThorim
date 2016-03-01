@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use LJDT\AppBundle\Form\PhotoType;
 
 class ProfileType extends AbstractType
 {
@@ -23,7 +24,7 @@ class ProfileType extends AbstractType
             ->add('facebook', TextType::class)
             ->add('twitter', TextType::class)
             ->add('linkedin', TextType::class)
-            ->add('photo', new PhotoType())
+            ->add('photo', PhotoType::class)
             ->add('save', SubmitType::class, array('label' => 'Valider'))
         ;
     }

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use LJDT\AppBundle\Form\PhotoType;
 
 class ProductType extends AbstractType
 {
@@ -14,13 +15,13 @@ class ProductType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)    
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->setAction("#")
             ->add('name', TextType::class)
             ->add('description', TextType::class)
-            ->add('photo', new PhotoType())
+            ->add('photo', PhotoType::class)
             ->add('save', SubmitType::class, array('label' => 'Valider'))
         ;
     }

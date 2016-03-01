@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use LJDT\AppBundle\Form\PhotoType;
 
 class GalleryType extends AbstractType
 {
@@ -19,7 +20,7 @@ class GalleryType extends AbstractType
         $builder
             ->setAction("#")
             ->add('title', TextType::class)
-            ->add('photo', new PhotoType())
+            ->add('photo', PhotoType::class)
             ->add('save', SubmitType::class, array('label' => 'Valider'))
         ;
     }
