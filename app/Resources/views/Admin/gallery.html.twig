@@ -11,7 +11,10 @@
         <h3 class="list-group-item title-admin">Liste de la galerie</h3>
         <ul class="list-group">
             {% for gallery in listGallery %}
-                <li class="list-group-item list-group-item-success">{{ gallery.title }}</li>
+                <li class="list-group-item list-group-item-success">
+                    {{ gallery.title }}
+                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': gallery.id}) }}">Supprimer</a>
+                </li>
             {% else %}
                 <li>Aucune photo trouvée</li>
             {% endfor %}

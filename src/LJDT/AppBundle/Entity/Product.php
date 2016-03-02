@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -25,6 +26,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez saisir le nom du produit")
      */
     private $name;
 
@@ -32,6 +34,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="Vous devez saisir la description du produit")
      */
     private $description;
 

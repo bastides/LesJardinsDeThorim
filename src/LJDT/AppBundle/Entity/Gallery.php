@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Gallery
@@ -25,6 +26,7 @@ class Gallery
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez saisir un titre")
      */
     private $title;
 

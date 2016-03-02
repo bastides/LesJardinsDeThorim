@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contact
@@ -25,6 +26,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez saisir votre nom")
      */
     private $name;
 
@@ -32,6 +34,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email
      */
     private $email;
 
@@ -46,6 +49,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="message", type="text")
+     * @Assert\NotBlank(message="Vous devez remplir la zone de message")
      */
     private $message;
 
@@ -53,7 +57,7 @@ class Contact
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,7 +80,7 @@ class Contact
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -99,7 +103,7 @@ class Contact
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -122,7 +126,7 @@ class Contact
     /**
      * Get object
      *
-     * @return string 
+     * @return string
      */
     public function getObject()
     {
@@ -145,7 +149,7 @@ class Contact
     /**
      * Get message
      *
-     * @return string 
+     * @return string
      */
     public function getMessage()
     {

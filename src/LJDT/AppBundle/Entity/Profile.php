@@ -3,6 +3,7 @@
 namespace LJDT\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Profile
@@ -25,6 +26,7 @@ class Profile
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez saisir le nom du profil")
      */
     private $name;
 
@@ -32,6 +34,7 @@ class Profile
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="Vous devez saisir la description du profil")
      */
     private $description;
 
@@ -55,7 +58,7 @@ class Profile
      * @ORM\Column(name="linkedin", type="string", length=255)
      */
     private $linkedin;
-    
+
     /**
      * @ORM\OneToOne(targetEntity="LJDT\AppBundle\Entity\Photo", cascade={"persist", "remove"})
      */

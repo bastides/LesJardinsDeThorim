@@ -4,6 +4,7 @@ namespace LJDT\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Photo
@@ -36,6 +37,9 @@ class Photo
      */
     private $alt;
 
+    /**
+     * @Assert\File(maxSize="5M")
+     */
     private $file;
 
     /**

@@ -162,4 +162,41 @@ class AdminController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    public function deleteAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = $em->getRepository('LJDTAppBundle:Product')->find($id);
+        $profile = $em->getRepository('LJDTAppBundle:Profile')->find($id);
+        $gallery = $em->getRepository('LJDTAppBundle:Gallery')->find($id);
+
+        $session = $request->getSession();
+
+        if ($product == null) {
+            if ($profile == null) {
+                if ($gallery == null) {
+                    return;
+                } else {
+                    $em->remove($gallery);
+                    $em->flush();
+                    $session->getFlashBag()->add('info', 'La photo a été supprimé');
+                    return $this->redirectToRoute('ljdt_admin_home');
+                }
+            } else {
+                $em->remove($profile);
+                $em->flush();
+                $session->getFlashBag()->add('info', 'Le profil a été supprimé');
+                return $this->redirectToRoute('ljdt_admin_home');
+            }
+        } else {
+            $em->remove($product);
+            $em->flush();
+            $session->getFlashBag()->add('info', 'Le produit a été supprimé');
+            return $this->redirectToRoute('ljdt_admin_home');
+        }
+
+        $session->getFlashBag()->add('info', 'Aucun élément n\'a été supprimé');
+        return $this->redirectToRoute('ljdt_admin_home');
+    }
 }

@@ -11,7 +11,10 @@
         <h3 class="list-group-item title-admin">Liste de tous les profils</h3>
         <ul class="list-group">
             {% for profile in listProfiles %}
-                <li class="list-group-item list-group-item-success">{{ profile.name }}</li>
+                <li class="list-group-item list-group-item-success">
+                    {{ profile.name }}
+                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': profile.id}) }}">Supprimer</a>
+                </li>
             {% else %}
                 <li>Aucun profil trouvé</li>
             {% endfor %}

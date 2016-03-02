@@ -29,3 +29,9 @@ ljdt_admin_gallery:
 ljdt_admin_gallery_add:
     path: /admin/gallery/add
     defaults:  { _controller: LJDTAppBundle:Admin:addGallery }
+
+ljdt_admin_delete:
+    path:      /admin/delete/{id}
+    defaults:  { _controller: LJDTAppBundle:Admin:delete }
+    requirements:
+        id: \d+
