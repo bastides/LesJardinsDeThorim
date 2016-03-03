@@ -1,10 +1,10 @@
 {# app/Resources/views/App/_profile.html.twig #}
 
 {% for profile in listProfiles %}
-    <div class="col-sm-3">
+    <div class="col-xs-12 col-sm-3 col-sm-offset-0">
         <h4 class="profil-absolute-center text-center profil-title">{{ profile.name | upper }}</h4>
         <p class="profil-absolute-center text-justify profil-content">{{ profile.description }}</p>
-        <p class="profil-absolute-center text-center profil-social-networks">
+        <p class="hidden-xs profil-absolute-center text-center profil-social-networks">
             <a href="{{ profile.facebook }}"><i class="fa fa-facebook"></i></a>
             <a href="{{ profile.twitter }}"><i class="fa fa-twitter"></i></a>
             <a href="{{ profile.linkedin }}"><i class="fa fa-linkedin"></i></a>
@@ -13,4 +13,4 @@
     </div>
 {% else %}
     <p>Aucun profil trouvé.</p>
-{% endfor %}             
+{% endfor %}

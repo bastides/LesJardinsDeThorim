@@ -63,7 +63,7 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(ProductType::class, $product);
 
         if ($form->handleRequest($request)->isValid()) {
-            $product->getPhoto()->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -113,7 +113,7 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(ProfileType::class, $profile);
 
         if ($form->handleRequest($request)->isValid()) {
-            $profile->getPhoto()->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($profile);
             $em->flush();
@@ -163,7 +163,7 @@ class AdminController extends Controller
         $form = $this->get('form.factory')->create(GalleryType::class, $gallery);
 
         if ($form->handleRequest($request)->isValid()) {
-            $gallery->getPhoto()->upload();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($gallery);
             $em->flush();
