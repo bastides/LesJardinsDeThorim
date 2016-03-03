@@ -1,2 +1,12 @@
 ljdt_app:
     resource: "@LJDTAppBundle/Resources/config/routing.yml"
+
+login:
+    pattern:   /login
+    defaults:  { _controller: LJDTUserBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

@@ -4,6 +4,7 @@
 
 namespace LJDT\AppBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +20,9 @@ use LJDT\AppBundle\Form\PhotoType;
 
 class AdminController extends Controller
 {
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function indexAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -31,6 +35,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function productsAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -47,6 +54,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function addProductAction(Request $request)
     {
         $product = new Product();
@@ -75,6 +85,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function profilesAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -91,6 +104,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function addProfileAction(Request $request)
     {
         $profile = new Profile();
@@ -119,6 +135,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function galleryAction()
     {
         $adminMenu = $this->get('ljdt_app.menu_admin');
@@ -135,6 +154,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function addGalleryAction(Request $request)
     {
         $gallery = new Gallery();
@@ -163,6 +185,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
     public function deleteAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
