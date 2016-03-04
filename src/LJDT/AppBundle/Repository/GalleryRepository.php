@@ -18,7 +18,7 @@ class GalleryRepository extends EntityRepository
         $queryBuilder = $this->_em->createQueryBuilder()
             ->select('g')
             ->from($this->_entityName, 'g')
-            ->orderBy('g.id', 'DESC')
+            ->orderBy('g.id', 'asc')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()

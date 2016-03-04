@@ -4,7 +4,7 @@
     <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0">
         <h4 class="product-absolute-center text-center product-title">{{ product.name }}</h4>
         <p class="product-absolute-center text-center product-content">{{ product.description }}</p>
-        <img src="{{ asset(product.photo.url) }}" class="img-responsive"  alt="{{ product.photo.alt }}">
+        <img src="{{ asset(product.photo.webPath) }}" class="img-responsive"  alt="{{ product.photo.alt }}">
     </div>
 {% else %}
     <p>Aucun produit trouvé.</p>

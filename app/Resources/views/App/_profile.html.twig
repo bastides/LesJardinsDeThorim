@@ -9,7 +9,7 @@
             <a href="{{ profile.twitter }}"><i class="fa fa-twitter"></i></a>
             <a href="{{ profile.linkedin }}"><i class="fa fa-linkedin"></i></a>
         </p>
-        <img src="{{ asset(profile.photo.url) }}" class="img-responsive"  alt="{{ profile.photo.alt }}">
+        <img src="{{ asset(profile.photo.webPath) }}" class="img-responsive"  alt="{{ profile.photo.alt }}">
     </div>
 {% else %}
     <p>Aucun profil trouvé.</p>

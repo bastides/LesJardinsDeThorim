@@ -2,8 +2,8 @@
 
 {% for gallery in listGalleries %}
 <div class="col-sm-3">
-    <img src="{{ asset(gallery.photo.url) }}" class="img-responsive"  alt="{{ gallery.photo.alt }}">
+    <img src="{{ asset(gallery.photo.webPath) }}" class="img-responsive"  alt="{{ gallery.photo.alt }}">
 </div>
 {% else %}
     <p>La galerie est vide.</p>
-{% endfor %} 
+{% endfor %}

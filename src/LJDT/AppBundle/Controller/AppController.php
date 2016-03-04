@@ -22,7 +22,7 @@ class AppController extends Controller
 
         $listProducts = $em->getRepository('LJDTAppBundle:Product')->findBy(
             array(),
-            array('id' => 'desc'),
+            array('id' => 'asc'),
             3,
             0
         );
@@ -52,7 +52,7 @@ class AppController extends Controller
             return $this->redirectToRoute('ljdt_app_home');
         }
 
-        return $this->render('::App/layout.html.twig', array(
+        return $this->render('::App/app.html.twig', array(
             'listProducts' => $listProducts,
             'listProfiles' => $listProfiles,
             'listGalleries' => $listGalleries,
