@@ -13,7 +13,7 @@
             {% for profile in listProfiles %}
                 <li class="list-group-item list-group-item-success">
                     {{ profile.name }}
-                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': profile.id}) }}">Supprimer</a>
+                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': profile.id, 'section': 'profile'}) }}">Supprimer</a>
                 </li>
             {% else %}
                 <li>Aucun profil trouvé</li>

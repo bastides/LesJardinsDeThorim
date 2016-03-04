@@ -2,3 +2,9 @@ services:
     ljdt_app.menu_admin:
         class: LJDT\AppBundle\Administration\MenuAdmin
         arguments: [@doctrine.orm.entity_manager]
+
+    ljdt_app.twig_extension:
+        class: LJDT\AppBundle\Twig\Extension\AppExtension
+        arguments: [@ljdt_app.menu_admin]
+        tags:
+            - { name : twig.extension }

@@ -13,7 +13,7 @@
             {% for gallery in listGallery %}
                 <li class="list-group-item list-group-item-success">
                     {{ gallery.title }}
-                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': gallery.id}) }}">Supprimer</a>
+                    <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': gallery.id, 'section': 'gallery'}) }}">Supprimer</a>
                 </li>
             {% else %}
                 <li>Aucune photo trouvée</li>

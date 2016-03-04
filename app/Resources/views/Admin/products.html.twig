@@ -12,7 +12,7 @@
         <ul class="list-group">
             {% for product in listProducts %}
                 <li class="list-group-item list-group-item-success">{{ product.name }}
-                <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': product.id}) }}">Supprimer</a></li>
+                <a class="pull-right" href="{{ path('ljdt_admin_delete', {'id': product.id, 'section': 'product'}) }}">Supprimer</a></li>
             {% else %}
                 <li>Aucun produit trouvé</li>
             {% endfor %}

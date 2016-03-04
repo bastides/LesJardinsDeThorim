@@ -25,14 +25,7 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
-        return $this->render('::Admin/admin.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries']
-        ));
+        return $this->render('::Admin/admin.html.twig');
     }
 
     /**
@@ -40,16 +33,10 @@ class AdminController extends Controller
      */
     public function productsAction()
     {
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         $em = $this->getDoctrine()->getManager();
         $listProducts = $em->getRepository('LJDTAppBundle:Product')->findAll();
 
         return $this->render('::Admin/products.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'listProducts' => $listProducts
         ));
     }
@@ -74,13 +61,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('ljdt_admin_home');
         }
 
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         return $this->render('::Admin/addproduct.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'form' => $form->createView()
         ));
     }
@@ -90,16 +71,10 @@ class AdminController extends Controller
      */
     public function profilesAction()
     {
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         $em = $this->getDoctrine()->getManager();
         $listProfiles = $em->getRepository('LJDTAppBundle:Profile')->findAll();
 
         return $this->render('::Admin/profiles.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'listProfiles' => $listProfiles
         ));
     }
@@ -124,13 +99,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('ljdt_admin_home');
         }
 
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         return $this->render('::Admin/addprofile.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'form' => $form->createView()
         ));
     }
@@ -140,16 +109,10 @@ class AdminController extends Controller
      */
     public function galleryAction()
     {
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         $em = $this->getDoctrine()->getManager();
         $listGallery = $em->getRepository('LJDTAppBundle:Gallery')->findAll();
 
         return $this->render('::Admin/gallery.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'listGallery' => $listGallery
         ));
     }
@@ -174,13 +137,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('ljdt_admin_home');
         }
 
-        $adminMenu = $this->get('ljdt_app.menu_admin');
-        $queries = $adminMenu->menu(5);
-
         return $this->render('::Admin/addgallery.html.twig', array(
-            'menuProducts' => $queries['menuProducts'],
-            'menuProfiles' => $queries['menuProfiles'],
-            'menuGalleries' => $queries['menuGalleries'],
             'form' => $form->createView()
         ));
     }
@@ -188,40 +145,34 @@ class AdminController extends Controller
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function deleteAction($id, Request $request)
+    public function deleteAction($id, $section, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $product = $em->getRepository('LJDTAppBundle:Product')->find($id);
-        $profile = $em->getRepository('LJDTAppBundle:Profile')->find($id);
-        $gallery = $em->getRepository('LJDTAppBundle:Gallery')->find($id);
-
         $session = $request->getSession();
 
-        if ($product == null) {
-            if ($profile == null) {
-                if ($gallery == null) {
-                    return;
-                } else {
-                    $em->remove($gallery);
-                    $em->flush();
+        $ressource = $em->getRepository('LJDTAppBundle:' . ucfirst($section))->find($id);
+
+        if ($ressource) {
+            $em->remove($ressource);
+            $em->flush();
+
+            switch ($section) {
+                case 'product':
+                    $session->getFlashBag()->add('info', 'Le produit a été supprimé');
+                    return $this->redirectToRoute('ljdt_admin_home');
+                break;
+                case 'profile':
+                    $session->getFlashBag()->add('info', 'Le profil a été supprimé');
+                    return $this->redirectToRoute('ljdt_admin_home');
+                break;
+                case 'gallery':
                     $session->getFlashBag()->add('info', 'La photo a été supprimé');
                     return $this->redirectToRoute('ljdt_admin_home');
-                }
-            } else {
-                $em->remove($profile);
-                $em->flush();
-                $session->getFlashBag()->add('info', 'Le profil a été supprimé');
-                return $this->redirectToRoute('ljdt_admin_home');
+                break;
             }
-        } else {
-            $em->remove($product);
-            $em->flush();
-            $session->getFlashBag()->add('info', 'Le produit a été supprimé');
-            return $this->redirectToRoute('ljdt_admin_home');
         }
 
-        $session->getFlashBag()->add('info', 'Aucun élément n\'a été supprimé');
         return $this->redirectToRoute('ljdt_admin_home');
     }
 }
